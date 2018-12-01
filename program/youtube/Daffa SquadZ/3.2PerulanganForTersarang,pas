@@ -1,0 +1,14 @@
+program PerulanganForTersarang;
+uses crt;
+var
+  a,b:integer;
+
+begin
+  for a:=1 to 3 do
+  begin
+    for b:=1 to 2 do
+    write(a:4,b:2);
+  end;
+  writeln;
+  readln;
+end. 
