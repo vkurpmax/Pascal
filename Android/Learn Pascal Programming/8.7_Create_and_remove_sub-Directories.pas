@@ -1,21 +1,21 @@
-program Lesson8_Program3;
-uses crt;
+program Lesson8_Program4;
+uses
+  WinDos, Dos; {note the inclusion of the 'windos.tpu' library}
 
 var
-  t:text;
-  s:string;
+  NewDir:pathstr; {for searching the dir and create a new one, if it does not exist}
+  f:text;
 
 begin
-  assign(t, 'c:\ABC.DEF');
-  {$I+} {enable again i/o error checking - important}
-  if (IOResult then
-  begin
-    writeln('The file required to be opened is not found!');
-    readln;
-  end else
-  begin
-    readln(t,s);
-    writeln('The first line of the file reads: ',s);
-    close(t);
-  end;
+  {search for the dir}
+  NewDir:=FSearch('C:\Pascal Programming'), GetEnv(''));
+  {create a new one, if it does not exist}
+  if NewDir='' Then
+    createDir('C:\Pascal Programming');
+  assign(F,'C:\Pascal Programming\pprogramming.txt');
+  {$I+} rewrite(F); {$I-} {disable and enable back again i/o error checking}
+  {write to text file}
+  writeln(F,'http://pascal-programming.info/');
+  {$I+} close(F); {$I-}
 end.
+    
